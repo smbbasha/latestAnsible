@@ -24,13 +24,13 @@
     command: "tar zxf /opt/SP/apps/tomcat.tar.gz  -C /opt/SP/apps/tomcat --strip-components 1"
 
   - name: Copy Index Page Files
-    copy: src=/var/lib/jenkins/workspace/AnsibleInfra/ dest=/opt/SP/apps/tomcat/webapps/ mode=0644
+    copy: src=/root/.jenkins/workspace/Devops_301_demo/index.html dest=/opt/SP/apps/tomcat/webapps/ mode=0644
     notify: 
     - Restart Tomcat
 
 
   - name: Copy Devops Project War Files
-    copy: src=/home/mtadminnuvelabs/jFrogArtifacte/petclinic.war dest=/opt/SP/apps/tomcat/webapps/ mode=0644
+    copy: src=/root/.jenkins/workspace/Devops_301_demo/target/*.war dest=/opt/SP/apps/tomcat/webapps/ mode=0644
 
   handlers:
   - name: Restart Tomcat
